@@ -63,8 +63,6 @@ public class MenuManager {
 		Scanner input = new Scanner(System.in);
 		System.out.print("Membrt ID: ");
 		int memberid = input.nextInt();
-
 	}
-
 }
 
