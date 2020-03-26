@@ -29,6 +29,7 @@ public class MenuManager {
 			}
 			else {
 				continue;
+
 			}
 		}
 	}
