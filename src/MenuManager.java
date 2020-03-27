@@ -8,7 +8,7 @@ public class MenuManager {
 		while (num != 6) {
 			System.out.println("*** Esf Management System Menu ***");
 			System.out.println(" 1. Add member");
-			System.out.println(" 2. Delate member");
+			System.out.println(" 2. Delete member");
 			System.out.println(" 3. Edit member");
 			System.out.println(" 4. Veiw member");
 			System.out.println(" 5. Show a menu");
@@ -19,7 +19,7 @@ public class MenuManager {
 				addmember();
 			}
 			else if (num == 2) {
-				delatemember();
+				deletemember();
 			}
 			else if (num == 3) {
 				editmember();
@@ -43,10 +43,10 @@ public class MenuManager {
 		String MemberEmail = input.next();
 		System.out.println("Phone nember: ");
 		String Memberphone = input.next();
-		System.out.println(Memberphone);
+		
 	}
 
-	public static void delatemember() {
+	public static void deletemember() {
 		Scanner input = new Scanner(System.in);
 		System.out.print("Membrt ID: ");
 		int memberid = input.nextInt();
