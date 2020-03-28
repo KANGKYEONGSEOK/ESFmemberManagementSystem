@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class MenuManager {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		int num = 5;
+		int num = 0;
 
 		while (num != 6) {
 			System.out.println("*** Esf Management System Menu ***");
@@ -42,8 +42,14 @@ public class MenuManager {
 		System.out.println("Email address: ");
 		String MemberEmail = input.next();
 		System.out.println("Phone nember: ");
-		String Memberphone = input.next();
-		
+		String Memberphone = input.next();	 
+		System.out.println("Campus: ");
+		String Membercmapus = input.next();
+		System.out.println("position: ");
+		String Memberposition = input.next();
+		System.out.println("Attendding church: ");
+		String Memberattenddingchurch = input.next();
+
 	}
 
 	public static void deletemember() {
