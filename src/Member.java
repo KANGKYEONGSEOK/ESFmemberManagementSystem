@@ -32,7 +32,7 @@ public class Member {
 	public void printInfo() {
 		System.out.println("id:" + id + " name:" + name + " email:" + email + " phone:" + phone + " campus:" + campus
 				+ " position:" + position + " attenddingchurch:" + attenddingchurch);
-		System.out.println("The people of GOD!");
+		System.out.println("The people of GOD!!");
 	}
 
 }
