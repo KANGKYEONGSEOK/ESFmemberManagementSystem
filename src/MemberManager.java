@@ -34,7 +34,7 @@ public class MemberManager {
 	public void deletemember() {
 		System.out.print("Member ID: ");
 		int MemberID = input.nextInt();
-		int index = -1; // array 에서 인덱스값 목찾앗다는 뜻(index는 0부터 시작)
+		int index = -1; // array 에 서 인덱스값 못찾앗다는 뜻(index는 0부터 시작)
 		for (int i = 0; i < members.size(); i++) { // int i= 0 i초기화
 			if (members.get(i).id == MemberID) { // ember.id == MemberID면 출력)
 				index = i;
