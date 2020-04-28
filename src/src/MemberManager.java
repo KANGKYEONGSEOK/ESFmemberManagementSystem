@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import member.Graduate;
 import member.HighschoolMember;
 import member.Member;
+import member.MemberKind;
 
 public class MemberManager {
 	ArrayList<Member> members = new ArrayList<Member>(); // ArrayList 는 멤버라는 클래스를 배열로 리스트를 만들어 다룬다는 뜻.
@@ -18,23 +20,30 @@ public class MemberManager {
 		int kind = 0;
 		Member member;
 		while (kind != 1 && kind != 2) {
-			System.out.print("1. for University ");
-			System.out.print("2. for High school ");
-			System.out.print("** Select num for Member Kind between 1 or 2 **");
+			System.out.println("1. for University ");
+			System.out.println("2. for High school ");
+			System.out.println("3. for Graduate ");
+			System.out.println("** Select num 1 or 2 or 3 for Member Kind between **");
 			kind = input.nextInt();
 
 			if (kind == 1) {
-				member = new Member();
+				member = new Member(MemberKind.University);
 				member.getUserInput(input);
 				members.add(member); // 위에서 입력받은 member의 정보를 members에 추가 하게 된다.
 				break;
 			} else if (kind == 2) {
-				member = new HighschoolMember();
+				member = new HighschoolMember(MemberKind.HighSchool);
 				member.getUserInput(input);
 				members.add(member); // 위에서 입력받은 member의 정보를 members에 추가 하게 된다.
 				break;
+			}
+			 else if (kind == 3) {
+					member = new Graduate(MemberKind.Graduate);
+					member.getUserInput(input);
+					members.add(member); // 위에서 입력받은 member의 정보를 members에 추가 하게 된다.
+					break;
 			} else {
-				System.out.print("** Select num for Member	Kind between 1 or 2 **");
+				System.out.print("** Select num 1 or 2 or 3 for Member Kind between  **");
 			}
 		}
 
@@ -125,13 +134,10 @@ public class MemberManager {
 	} // public~
 
 	public void viewmembers() {
-		// System.out.print("Membrt ID: ");
-		// int MemberID = input.nextInt();
 		System.out.println("# of registered member: " + members.size());
 		for (int i = 0; i < members.size(); i++) {
 			members.get(i).printInfo();
 		}
 
 	}
-
 }

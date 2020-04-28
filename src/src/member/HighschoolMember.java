@@ -2,7 +2,13 @@ package member;
 
 import java.util.Scanner;
 
+import member.MemberKind;
+
 public class HighschoolMember extends Member {
+
+	public HighschoolMember(MemberKind kind) {
+		super(kind);
+	}
 
 	public void getUserInput(Scanner input) {
 		System.out.print("Member ID: ");
@@ -57,5 +63,6 @@ public class HighschoolMember extends Member {
 		System.out.println("Attendding church: ");
 		String attenddingchurch = input.next();
 		this.setAttenddingchurch(attenddingchurch);
+
 	}
 }

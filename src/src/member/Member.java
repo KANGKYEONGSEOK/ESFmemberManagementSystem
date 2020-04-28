@@ -2,6 +2,8 @@ package member;
 
 import java.util.Scanner;
 
+import member.MemberKind;
+
 public class Member {
 	protected MemberKind kind;
 	protected String name;
@@ -15,7 +17,10 @@ public class Member {
 
 	public Member() {
 	}
-
+	
+	public Member(MemberKind kind) {
+		this.kind = kind;
+	}
 	public Member(String name, int id, String campus, String position) {
 		this.id = id;
 		this.name = name;
@@ -23,8 +28,9 @@ public class Member {
 		this.position = position;
 	}
 
-	public Member(int id, String name, String email, String phone, String campus, String position,
+	public Member(MemberKind kind,int id, String name, String email, String phone, String campus, String position,
 			String attenddingchurch) {
+		this.kind = kind; //
 		this.id = id; // this의 뜻. 필드의 네임의~ 뒤에거는 파라미터 네임
 		this.name = name;
 		this.email = email;
@@ -99,11 +105,30 @@ public class Member {
 		this.attenddingchurch = attenddingchurch;
 	}
 
+	
+	
 	public void printInfo() {
-		System.out.println("id:" + id + " name:" + name + " email:" + email + " phone:" + phone + " campus:" + campus
+		String skind = "none";
+		switch(this.kind) {
+		case University:
+			skind = "Univ";
+			break;
+		case HighSchool:
+			skind = "High";
+			break;
+		case Shepherd:
+			skind = "Shepherd";
+			break;	
+		case Graduate:
+			skind = "Graduate";
+			break;
+		default:			
+		}
+		System.out.println("Kind:" + skind +" id:" + id + " name:" + name + " email:" + email + " phone:" + phone + " campus:" + campus
 				+ " position:" + position + " attenddingchurch:" + attenddingchurch);
 		System.out.println("The people of GOD!");
 	}
+	
 
 	public void getUserInput(Scanner input) {
 		System.out.print("Member ID: ");
