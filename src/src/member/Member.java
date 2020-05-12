@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import member.MemberKind;
 
-public class Member {
+public abstract class Member implements MemberInput  {
 	protected MemberKind kind;
 	protected String name;
 	protected int id;
@@ -104,10 +104,47 @@ public class Member {
 	public void setAttenddingchurch(String attenddingchurch) {
 		this.attenddingchurch = attenddingchurch;
 	}
-
+	
+	public abstract void printInfo();
+	
+	public void setMemberID(Scanner input) {
+		System.out.print("Member ID: ");
+		int id = input.nextInt();
+		this.setId(id);
+	}
+	
+	public void setMemberName(Scanner input) {
+		System.out.print("Member name: ");
+		String name = input.next();
+		this.setName(name);
+	}
+	
+	public void setMemberEmail(Scanner input) {
+		System.out.println("Email address: ");
+		String email = input.next();
+		this.setEmail(email);
+	}
 	
 	
-	public void printInfo() {
+	public void setMemberPhone(Scanner input) {
+		System.out.println("Phone number: ");
+		String phone = input.next();
+		this.setPhone(phone);
+	}
+	
+	public void setMemberCampus(Scanner input) {
+		System.out.println("Campus: ");
+		String campus = input.next();
+		this.setCampus(campus);
+	}
+	
+	public void setMemberPosition(Scanner input) {
+		System.out.println("position: ");
+		String position = input.next();
+		this.setPosition(position);
+	}
+	
+	public String getKindString() {
 		String skind = "none";
 		switch(this.kind) {
 		case University:
@@ -124,41 +161,14 @@ public class Member {
 			break;
 		default:			
 		}
-		System.out.println("Kind:" + skind +" id:" + id + " name:" + name + " email:" + email + " phone:" + phone + " campus:" + campus
-				+ " position:" + position + " attenddingchurch:" + attenddingchurch);
-		System.out.println("The people of GOD!");
+		return skind;
 	}
 	
-
-	public void getUserInput(Scanner input) {
-		System.out.print("Member ID: ");
-		int id = input.nextInt(); // °´Ã¼ÀÇ ÇÊµå¿¡ ÀÔ·ÂÀÌ µÊ
-		this.setId(id);
-
-		System.out.print("Member name: ");
-		String name = input.next();
-		this.setName(name);
-
-		System.out.println("Email address: ");
-		String email = input.next();
-		this.setEmail(email);
-
-		System.out.println("Phone number: ");
-		String phone = input.next();
-		this.setPhone(phone);
-
-		System.out.println("Campus: ");
-		String campus = input.next();
-		this.setCampus(campus);
-
-		System.out.println("position: ");
-		String position = input.next();
-		this.setPosition(position);
-
+	public void setMemberAttenddingChurch(Scanner input) {
 		System.out.println("Attendding church: ");
 		String attenddingchurch = input.next();
 		this.setAttenddingchurch(attenddingchurch);
-	}
+	}	
 
 }
 
