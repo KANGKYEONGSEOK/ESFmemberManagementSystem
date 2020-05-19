@@ -2,6 +2,8 @@ package member;
 
 import java.util.Scanner;
 
+import exception.EmailFormatException;
+
 public abstract class NonUniversityMember extends Member {
 
 	public NonUniversityMember(MemberKind kind) {
@@ -24,15 +26,25 @@ public abstract class NonUniversityMember extends Member {
 		while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N') {
 			System.out.println("Do you have an Email address? (Y/N)");
 			answer = input.next().charAt(0); // 처음값을 가지고 옮.
-			if (answer == 'y' || answer == 'Y') {
-				System.out.println("Email address: ");
-				String email = input.next();
-				this.setEmail(email);
-				break;
-			} else if (answer == 'n' || answer == 'N') {
-				this.setEmail("");
-				break;
-			} else {
+			try {
+				if (answer == 'y' || answer == 'Y') {
+					setMemberEmail(input);
+					break;
+//					System.out.println("Email address: ");
+//					String email = input.next();
+//					this.setEmail(email);
+//					break;
+				} 
+				
+				else if (answer == 'n' || answer == 'N') {
+					this.setEmail("");
+					break;
+				} 
+				else {
+				}
+			}
+			catch(EmailFormatException e) {
+				System.out.println("Incorrect Email Format. Please put the e-mail adderess that contains @ ");
 			}
 		}
 	}

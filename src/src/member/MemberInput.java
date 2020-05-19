@@ -2,6 +2,8 @@ package member;
 
 import java.util.Scanner;
 
+import exception.EmailFormatException;
+
 public interface MemberInput {
 
 	public int getId();
@@ -10,7 +12,7 @@ public interface MemberInput {
 
 	public void setName(String name);
 
-	public void setEmail(String email);
+	public void setEmail(String email) throws EmailFormatException;
 
 	public void setPhone(String phone);
 

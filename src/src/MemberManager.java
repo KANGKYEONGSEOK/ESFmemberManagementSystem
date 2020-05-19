@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import member.Graduate;
@@ -21,30 +22,39 @@ public class MemberManager {
 	public void addmember() {
 		int kind = 0;
 		MemberInput member;
-		while (kind != 1 && kind != 2) {
-			System.out.println("1. for University ");
-			System.out.println("2. for High school ");
-			System.out.println("3. for Graduate ");
-			System.out.println("** Select num 1 or 2 or 3 for Member Kind between **");
-			kind = input.nextInt();
 
-			if (kind == 1) {
-				member = new UniversityMember(MemberKind.University);
-				member.getUserInput(input);
-				members.add(member); // 위에서 입력받은 member의 정보를 members에 추가 하게 된다.
-				break;
-			} else if (kind == 2) {
-				member = new HighschoolMember(MemberKind.HighSchool);
-				member.getUserInput(input);
-				members.add(member); // 위에서 입력받은 member의 정보를 members에 추가 하게 된다.
-				break;
-			} else if (kind == 3) {
-				member = new Graduate(MemberKind.Graduate);
-				member.getUserInput(input);
-				members.add(member); // 위에서 입력받은 member의 정보를 members에 추가 하게 된다.
-				break;
-			} else {
-				System.out.print("** Select num 1 or 2 or 3 for Member Kind between  **");
+		while (kind < 1 || kind > 3) {
+			try {
+				System.out.println("1. for University ");
+				System.out.println("2. for High school ");
+				System.out.println("3. for Graduate ");
+				System.out.println("** Select num 1 or 2 or 3 for Member Kind between **");
+				kind = input.nextInt();
+
+				if (kind == 1) {
+					member = new UniversityMember(MemberKind.University);
+					member.getUserInput(input);
+					members.add(member); // 위에서 입력받은 member의 정보를 members에 추가 하게 된다.
+					break;
+				} else if (kind == 2) {
+					member = new HighschoolMember(MemberKind.HighSchool);
+					member.getUserInput(input);
+					members.add(member); // 위에서 입력받은 member의 정보를 members에 추가 하게 된다.
+					break;
+				} else if (kind == 3) {
+					member = new Graduate(MemberKind.Graduate);
+					member.getUserInput(input);
+					members.add(member); // 위에서 입력받은 member의 정보를 members에 추가 하게 된다.
+					break;
+				} else {
+					System.out.print("** Select num 1 or 2 or 3 for Member Kind between  **");
+				}
+			} catch (InputMismatchException e) {
+				System.out.println(" Please put an integer between 1 ~ 3 ");
+				if (input.hasNext()) {
+					input.next();
+				}
+				kind = 0;
 			}
 		}
 

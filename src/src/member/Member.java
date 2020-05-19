@@ -2,6 +2,7 @@ package member;
 
 import java.util.Scanner;
 
+import exception.EmailFormatException;
 import member.MemberKind;
 
 public abstract class Member implements MemberInput  {
@@ -69,12 +70,15 @@ public abstract class Member implements MemberInput  {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(String email) throws EmailFormatException {
+		if (!email.contains("@") && !email.equals("") ) { // 이메일 형식에 @가 포함되어 있지 않으면 if선언.
+			throw new EmailFormatException();
+		}
 		this.email = email;
 	}
 
 	public String getPhone() {
-		return phone;
+		return phone; 
 	}
 
 	public void setPhone(String phone) {
@@ -120,9 +124,17 @@ public abstract class Member implements MemberInput  {
 	}
 	
 	public void setMemberEmail(Scanner input) {
-		System.out.println("Email address: ");
-		String email = input.next();
-		this.setEmail(email);
+		String email = "";
+		
+		while(!email.contains("@")) {
+			System.out.println("Email address: ");
+			email = input.next();
+			try {
+				this.setEmail(email);
+			} catch (EmailFormatException e) {
+				System.out.println("Incorrect Email Format. Please put the e-mail adderess that contains @ ");
+			}
+		}
 	}
 	
 	
