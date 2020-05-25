@@ -1,19 +1,22 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import member.Graduate;
 import member.HighschoolMember;
-import member.Member;
 import member.MemberInput;
 import member.MemberKind;
 import member.UniversityMember;
+ 
+public class MemberManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2641023388399356158L;
 
-public class MemberManager {
 	ArrayList<MemberInput> members = new ArrayList<MemberInput>(); // ArrayList 는 멤버라는 클래스를 배열로 리스트를 만들어 다룬다는 뜻.
-
-	Member member; // add member 시 생성
-	Scanner input; // input을 클래스 레벨에서의 필드로 선언
+	transient Scanner input; // Scanner는 저장하지 않겠다 라는 뜻으로 transient. transient는 Serialize하는 과정에 제외하고 싶은 경우 선언하는 키워드입니다.
+	
 
 	MemberManager(Scanner input) {
 		this.input = input;
@@ -150,4 +153,9 @@ public class MemberManager {
 		System.out.println(" 8. Exit");
 		System.out.println("Select one number between 1 - 8:");
 	}
+	
+	public void setScanner(Scanner input) {
+        this.input = input;
+    }
+	
 }

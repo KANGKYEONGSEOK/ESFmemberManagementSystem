@@ -1,11 +1,16 @@
 package member;
 
+import java.io.Serializable;
 import java.util.Scanner;
-
 import exception.EmailFormatException;
 import member.MemberKind;
 
-public abstract class Member implements MemberInput  {
+public abstract class Member implements MemberInput, Serializable  {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5029920574387810301L;
+
 	protected MemberKind kind;
 	protected String name;
 	protected int id;
@@ -13,12 +18,11 @@ public abstract class Member implements MemberInput  {
 	protected String phone;
 	protected String campus;
 	protected String position;
-	protected String attenddingchurch; // protected는 상속받은 클래스까지도 접근을 가능케 해주는 접근제한자이다. (encapsulation). 자식한테는 상속이 가능한데이외
-	// 외부 클래스 접근이 nono
+	protected String attenddingchurch; 
 
 	public Member() {
 	}
-	
+
 	public Member(MemberKind kind) {
 		this.kind = kind;
 	}
@@ -108,24 +112,24 @@ public abstract class Member implements MemberInput  {
 	public void setAttenddingchurch(String attenddingchurch) {
 		this.attenddingchurch = attenddingchurch;
 	}
-	
+
 	public abstract void printInfo();
-	
+
 	public void setMemberID(Scanner input) {
 		System.out.print("Member ID: ");
 		int id = input.nextInt();
 		this.setId(id);
 	}
-	
+
 	public void setMemberName(Scanner input) {
 		System.out.print("Member name: ");
 		String name = input.next();
 		this.setName(name);
 	}
-	
+
 	public void setMemberEmail(Scanner input) {
 		String email = "";
-		
+
 		while(!email.contains("@")) {
 			System.out.println("Email address: ");
 			email = input.next();
@@ -136,26 +140,26 @@ public abstract class Member implements MemberInput  {
 			}
 		}
 	}
-	
-	
+
+
 	public void setMemberPhone(Scanner input) {
 		System.out.println("Phone number: ");
 		String phone = input.next();
 		this.setPhone(phone);
 	}
-	
+
 	public void setMemberCampus(Scanner input) {
 		System.out.println("Campus: ");
 		String campus = input.next();
 		this.setCampus(campus);
 	}
-	
+
 	public void setMemberPosition(Scanner input) {
 		System.out.println("position: ");
 		String position = input.next();
 		this.setPosition(position);
 	}
-	
+
 	public String getKindString() {
 		String skind = "none";
 		switch(this.kind) {
@@ -175,7 +179,7 @@ public abstract class Member implements MemberInput  {
 		}
 		return skind;
 	}
-	
+
 	public void setMemberAttenddingChurch(Scanner input) {
 		System.out.println("Attendding church: ");
 		String attenddingchurch = input.next();
