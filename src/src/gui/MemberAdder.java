@@ -7,9 +7,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-public class MemberAdder extends JFrame {
+public class MemberAdder extends JPanel {
+	
+	WindowFrame frame;
 
-	public MemberAdder() {
+	public MemberAdder(WindowFrame frame) {
+		this.frame = frame;
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
 
@@ -65,9 +68,8 @@ public class MemberAdder extends JFrame {
 		panel.add(new JButton("SAVE"));
 		panel.add(new JButton("Cancel"));
 		SpringUtilities.makeCompactGrid(panel, 8, 2, 6, 6, 6, 6);
-		this.setSize(300, 300); // 사이즈 설정.
-		this.setContentPane(panel);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+		
+		this.add(panel); //
 		this.setVisible(true); 
 	}
 }
