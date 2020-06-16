@@ -3,20 +3,27 @@ package gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class WindowFrame extends JFrame {
+import manager.MemberManager;
 
+public class WindowFrame extends JFrame {
+	
+	MemberManager membermanager; 
 	MenuSelection menuselection;
 	MemberAdder memberadder;
 	MemberViewer memberviewer;
+	
 
-	public WindowFrame() {
-		this.menuselection = new MenuSelection(this);
-		this.memberadder = new MemberAdder(this);
-		this.memberviewer = new MemberViewer(this);
+	public WindowFrame(MemberManager membermanager) {
+		
+		this.membermanager = membermanager; 
+		menuselection = new MenuSelection(this);
+		memberadder = new MemberAdder(this);
+		memberviewer = new MemberViewer(this, this.membermanager ); 
+		
 		this.setTitle("ESF Member Management System by.ks");
-		this.setSize(500, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		this.setSize(500, 300);
+		
 		this.setupPanel(menuselection);
 
 		this.setVisible(true);

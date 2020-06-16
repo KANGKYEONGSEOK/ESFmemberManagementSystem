@@ -1,9 +1,11 @@
+package manager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import member.Graduate;
 import member.HighschoolMember;
+import member.Member;
 import member.MemberInput;
 import member.MemberKind;
 import member.UniversityMember;
@@ -139,6 +141,14 @@ public class MemberManager implements Serializable {
 		for (int i = 0; i < members.size(); i++) {
 			members.get(i).printInfo();
 		}
+	}
+	
+	public int size() {  
+		return members.size();
+	}
+	
+	public MemberInput get(int index) { 
+		return (Member) members.get(index);
 	}
 
 	public void showEditMenu() {

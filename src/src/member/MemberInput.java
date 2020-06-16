@@ -9,16 +9,28 @@ public interface MemberInput {
 	public int getId();
 
 	public void setId(int id);
+	
+	public String getName();
 
 	public void setName(String name);
+	
+	public String getEmail();
 
 	public void setEmail(String email) throws EmailFormatException;
+	
+	public String getPhone();
 
 	public void setPhone(String phone);
+	
+	public String getCampus();
 
 	public void setCampus(String campus);
+	
+	public String getPosition();
 
 	public void setPosition(String position);
+	
+	public String getAttenddingchurch();
 
 	public void setAttenddingchurch(String attenddingchurch);
 
